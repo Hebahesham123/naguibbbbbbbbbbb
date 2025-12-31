@@ -1,6 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
+import Image from "next/image"
 import { Check, AlertCircle, MessageCircle, Copy, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -101,9 +102,16 @@ export default function PaymentConfirmation() {
               {/* Animated rings */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#8B4513] to-[#A0522D] rounded-full blur-3xl opacity-40 animate-pulse-slow" />
               <div className="absolute inset-0 bg-gradient-to-r from-[#A0522D] to-[#8B4513] rounded-full blur-2xl opacity-30 animate-pulse-slow" style={{ animationDelay: '1s' }} />
-              {/* Success icon - smaller */}
-              <div className="relative w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-[#8B4513] via-[#A0522D] to-[#8B4513] rounded-full flex items-center justify-center shadow-2xl border-2 border-[#D2B48C]/40 animate-bounce-in">
-                <Check className="w-10 h-10 sm:w-12 sm:h-12 text-white animate-check-draw" strokeWidth={3} />
+              {/* Success icon - Logo */}
+              <div className="relative w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-[#8B4513] via-[#A0522D] to-[#8B4513] rounded-full flex items-center justify-center shadow-2xl border-2 border-[#D2B48C]/40 animate-bounce-in overflow-hidden">
+                <Image
+                  src="/images/ns-logo.png"
+                  alt="Naguib Selim"
+                  width={80}
+                  height={40}
+                  className="object-contain w-16 h-16 sm:w-20 sm:h-20 brightness-0 invert"
+                  priority
+                />
               </div>
             </div>
           </div>
