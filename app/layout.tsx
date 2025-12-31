@@ -9,8 +9,8 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] })
 const _playfair = Playfair_Display({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Naguib Seliem - Payment Confirmation",
-  description: "Order confirmation and payment details for Naguib Seliem Fabrics",
+  title: "Naguib Selim - Payment Confirmation",
+  description: "Order confirmation and payment details for Naguib Selim Fabrics",
   generator: "v0.app",
   icons: {
     icon: [
