@@ -293,6 +293,52 @@ export default function PaymentConfirmation() {
                     </div>
                   </div>
                 </div>
+
+                {/* Bank MISR Account */}
+                <div className="space-y-3">
+                  <label className="text-sm font-semibold text-[#8B4513] uppercase tracking-wider">
+                    بنك مصر • Bank MISR
+                  </label>
+                  <div className="flex items-center gap-3 min-w-0">
+                    <code className="flex-1 bg-[#FFF8DC] border-2 border-[#D2B48C] px-5 sm:px-6 py-4 rounded-xl text-base sm:text-lg font-mono text-[#5C4033] truncate shadow-inner">
+                      4620001000000980
+                    </code>
+                    <button
+                      onClick={() => copyToClipboard("4620001000000980", "instapay-misr")}
+                      className="p-4 hover:bg-[#F5E6D3] rounded-xl transition-all duration-200 flex-shrink-0 hover:scale-110 active:scale-95 border-2 border-[#D2B48C] hover:border-[#8B4513] relative group"
+                    >
+                      <Copy className="w-6 h-6 text-[#8B4513] group-hover:text-[#A0522D] transition-colors" />
+                      {copied === "instapay-misr" && (
+                        <span className="absolute -top-12 left-1/2 -translate-x-1/2 text-sm text-white font-semibold bg-[#8B4513] px-4 py-2 rounded-lg shadow-2xl animate-fade-in whitespace-nowrap">
+                          ✓ Copied!
+                        </span>
+                      )}
+                    </button>
+                  </div>
+                </div>
+
+                {/* Bank S.A.I.B Account */}
+                <div className="space-y-3">
+                  <label className="text-sm font-semibold text-[#8B4513] uppercase tracking-wider">
+                    بنك سايب • S.A.I.B Bank
+                  </label>
+                  <div className="flex items-center gap-3 min-w-0">
+                    <code className="flex-1 bg-[#FFF8DC] border-2 border-[#D2B48C] px-5 sm:px-6 py-4 rounded-xl text-base sm:text-lg font-mono text-[#5C4033] truncate shadow-inner">
+                      0420302699610010
+                    </code>
+                    <button
+                      onClick={() => copyToClipboard("0420302699610010", "instapay-saib")}
+                      className="p-4 hover:bg-[#F5E6D3] rounded-xl transition-all duration-200 flex-shrink-0 hover:scale-110 active:scale-95 border-2 border-[#D2B48C] hover:border-[#8B4513] relative group"
+                    >
+                      <Copy className="w-6 h-6 text-[#8B4513] group-hover:text-[#A0522D] transition-colors" />
+                      {copied === "instapay-saib" && (
+                        <span className="absolute -top-12 left-1/2 -translate-x-1/2 text-sm text-white font-semibold bg-[#8B4513] px-4 py-2 rounded-lg shadow-2xl animate-fade-in whitespace-nowrap">
+                          ✓ Copied!
+                        </span>
+                      )}
+                    </button>
+                  </div>
+                </div>
               </div>
             )}
           </div>
