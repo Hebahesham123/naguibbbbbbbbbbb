@@ -1,5 +1,5 @@
-import PaymentConfirmation from "@/components/payment-confirmation"
+import PreviewBooking from "@/components/preview-booking"
 
 export default function Home() {
-  return <PaymentConfirmation />
+  return <PreviewBooking />
 }
