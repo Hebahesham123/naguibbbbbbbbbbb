@@ -2,12 +2,12 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import { Check, AlertCircle, MessageCircle, Copy, ChevronDown } from "lucide-react"
+import { AlertCircle, MessageCircle, Copy, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
-export default function PaymentConfirmation() {
+export default function PreviewBooking() {
   const [copied, setCopied] = useState<string | null>(null)
-  const [expandedBank, setExpandedBank] = useState<string | null>("misr")
+  const [expandedBank, setExpandedBank] = useState<string | null>("instapay")
   const [scrollProgress, setScrollProgress] = useState(0)
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 })
   const [isMounted, setIsMounted] = useState(false)
@@ -114,14 +114,14 @@ export default function PaymentConfirmation() {
 
       {/* Main Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-6 sm:px-8 py-12 sm:py-16 space-y-10 sm:space-y-12">
-        {/* Success Status Section */}
+        {/* Preview Booking Header Section */}
         <div className="animate-fade-in space-y-8">
           <div className="flex justify-center">
             <div className="relative">
               {/* Animated rings */}
               <div className="absolute inset-0 bg-gradient-to-r from-[#8B4513] to-[#A0522D] rounded-full blur-3xl opacity-40 animate-pulse-slow" />
               <div className="absolute inset-0 bg-gradient-to-r from-[#A0522D] to-[#8B4513] rounded-full blur-2xl opacity-30 animate-pulse-slow" style={{ animationDelay: '1s' }} />
-              {/* Success icon - Logo */}
+              {/* Logo */}
               <div className="relative w-20 h-20 sm:w-24 sm:h-24 bg-gradient-to-br from-[#8B4513] via-[#A0522D] to-[#8B4513] rounded-full flex items-center justify-center shadow-2xl border-2 border-[#D2B48C]/40 animate-bounce-in overflow-hidden">
                 <Image
                   src="/images/ns-logo.png"
@@ -137,33 +137,11 @@ export default function PaymentConfirmation() {
 
           <div className="text-center space-y-5">
             <h1 className="text-4xl sm:text-5xl font-bold text-[#5C4033] text-balance leading-tight animate-slide-up-delay">
-              تم تجهيز طلبكم
+              حجز المعاينة أصبح أسهل
             </h1>
-            <p className="text-2xl sm:text-3xl font-semibold bg-gradient-to-r from-[#8B4513] via-[#A0522D] to-[#8B4513] bg-clip-text text-transparent animate-gradient-text">
-              Your Order is Ready
-            </p>
             <p className="text-lg sm:text-xl text-[#6B4E3D]/90 leading-relaxed text-balance max-w-2xl mx-auto">
-              نحيطكم علماً بأنه تم الانتهاء من تجهيز الأوردر الخاص بكم لتأكيد موعد التركيب النهائي
+              لتأكيد موعد المعاينة، يمكنكم الدفع من خلال أحد الخيارات التالية:
             </p>
-          </div>
-        </div>
-
-        {/* Important Notice */}
-        <div className="bg-white/30 backdrop-blur-xl border-l-4 border-[#8B4513] rounded-2xl p-7 sm:p-8 space-y-4 animate-slide-up shadow-2xl border border-white/20 backdrop-saturate-150">
-          <div className="flex items-start gap-5">
-            <div className="relative flex-shrink-0 mt-1">
-              <div className="absolute inset-0 bg-[#8B4513]/30 rounded-full blur-xl animate-pulse" />
-              <AlertCircle className="relative w-7 h-7 sm:w-8 sm:h-8 text-[#8B4513]" />
-            </div>
-            <div className="min-w-0 flex-1 space-y-3">
-              <p className="font-bold text-[#5C4033] text-lg sm:text-xl">⚠️ هام - Important</p>
-              <p className="text-base sm:text-lg text-[#6B4E3D] leading-relaxed">
-                يرجى إتمام سداد المبلغ المتبقي المستحق عبر أحد الخيارات التالية:
-              </p>
-              <p className="text-base sm:text-lg text-[#6B4E3D] leading-relaxed">
-                Please complete payment using one of the options below:
-              </p>
-            </div>
           </div>
         </div>
 
@@ -173,118 +151,8 @@ export default function PaymentConfirmation() {
             خيارات الدفع • Payment Options
           </h2>
 
-          {/* Bank MISR */}
-          <div className="border border-white/30 rounded-2xl overflow-hidden hover:border-white/50 hover:shadow-2xl transition-all duration-500 bg-white/25 backdrop-blur-2xl shadow-xl animate-slide-up-delay-2 backdrop-saturate-150">
-            <button
-              onClick={() => setExpandedBank(expandedBank === "misr" ? null : "misr")}
-              className="w-full px-7 sm:px-8 py-6 sm:py-7 bg-white/20 backdrop-blur-md hover:bg-white/30 flex items-center justify-between transition-all duration-300 group border-b border-white/20"
-            >
-              <div className="text-left min-w-0">
-                <p className="font-bold text-xl sm:text-2xl text-[#5C4033] truncate">بنك مصر</p>
-                <p className="text-base sm:text-lg text-[#8B4513] mt-1">Banque MISR</p>
-              </div>
-              <ChevronDown
-                className={`w-6 h-6 sm:w-7 sm:h-7 text-[#8B4513] transition-all duration-300 flex-shrink-0 ml-4 group-hover:scale-110 group-hover:text-[#A0522D]`}
-                style={{
-                  transform: expandedBank === "misr" ? "rotate(180deg)" : "rotate(0deg)",
-                }}
-              />
-            </button>
-
-            {expandedBank === "misr" && (
-              <div className="px-7 sm:px-8 py-7 sm:py-8 space-y-6 bg-white/20 backdrop-blur-xl animate-expand backdrop-saturate-150">
-                <div className="space-y-3">
-                  <label className="text-sm font-semibold text-[#8B4513] uppercase tracking-wider">
-                    رقم الحساب • Account Number
-                  </label>
-                  <div className="flex items-center gap-3 min-w-0">
-                    <code className="flex-1 bg-[#FFF8DC] border-2 border-[#D2B48C] px-5 sm:px-6 py-4 rounded-xl text-base sm:text-lg font-mono text-[#5C4033] truncate shadow-inner">
-                      4620001000000980
-                    </code>
-                    <button
-                      onClick={() => copyToClipboard("4620001000000980", "misr-account")}
-                      className="p-4 hover:bg-[#F5E6D3] rounded-xl transition-all duration-200 flex-shrink-0 hover:scale-110 active:scale-95 border-2 border-[#D2B48C] hover:border-[#8B4513] relative group"
-                    >
-                      <Copy className="w-6 h-6 text-[#8B4513] group-hover:text-[#A0522D] transition-colors" />
-                      {copied === "misr-account" && (
-                        <span className="absolute -top-12 left-1/2 -translate-x-1/2 text-sm text-white font-semibold bg-[#8B4513] px-4 py-2 rounded-lg shadow-2xl animate-fade-in whitespace-nowrap">
-                          ✓ Copied!
-                        </span>
-                      )}
-                    </button>
-                  </div>
-                </div>
-
-                <div className="space-y-3">
-                  <label className="text-sm font-semibold text-[#8B4513] uppercase tracking-wider">IBAN</label>
-                  <div className="flex items-center gap-3 min-w-0">
-                    <code className="flex-1 bg-[#FFF8DC] border-2 border-[#D2B48C] px-5 sm:px-6 py-4 rounded-xl text-sm sm:text-base font-mono text-[#5C4033] truncate shadow-inner">
-                      EG860002046204620001000000980
-                    </code>
-                    <button
-                      onClick={() => copyToClipboard("EG860002046204620001000000980", "misr-iban")}
-                      className="p-4 hover:bg-[#F5E6D3] rounded-xl transition-all duration-200 flex-shrink-0 hover:scale-110 active:scale-95 border-2 border-[#D2B48C] hover:border-[#8B4513] relative group"
-                    >
-                      <Copy className="w-6 h-6 text-[#8B4513] group-hover:text-[#A0522D] transition-colors" />
-                      {copied === "misr-iban" && (
-                        <span className="absolute -top-12 left-1/2 -translate-x-1/2 text-sm text-white font-semibold bg-[#8B4513] px-4 py-2 rounded-lg shadow-2xl animate-fade-in whitespace-nowrap">
-                          ✓ Copied!
-                        </span>
-                      )}
-                    </button>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Bank S.A.I.B */}
-          <div className="border border-white/30 rounded-2xl overflow-hidden hover:border-white/50 hover:shadow-2xl transition-all duration-500 bg-white/25 backdrop-blur-2xl shadow-xl animate-slide-up-delay-3 backdrop-saturate-150">
-            <button
-              onClick={() => setExpandedBank(expandedBank === "saib" ? null : "saib")}
-              className="w-full px-7 sm:px-8 py-6 sm:py-7 bg-white/20 backdrop-blur-md hover:bg-white/30 flex items-center justify-between transition-all duration-300 group border-b border-white/20"
-            >
-              <div className="text-left min-w-0">
-                <p className="font-bold text-xl sm:text-2xl text-[#5C4033] truncate">بنك سايب</p>
-                <p className="text-base sm:text-lg text-[#8B4513] mt-1">S.A.I.B Bank</p>
-              </div>
-              <ChevronDown
-                className={`w-6 h-6 sm:w-7 sm:h-7 text-[#8B4513] transition-all duration-300 flex-shrink-0 ml-4 group-hover:scale-110 group-hover:text-[#A0522D]`}
-                style={{
-                  transform: expandedBank === "saib" ? "rotate(180deg)" : "rotate(0deg)",
-                }}
-              />
-            </button>
-
-            {expandedBank === "saib" && (
-              <div className="px-7 sm:px-8 py-7 sm:py-8 space-y-6 bg-white/20 backdrop-blur-xl animate-expand backdrop-saturate-150">
-                <div className="space-y-3">
-                  <label className="text-sm font-semibold text-[#8B4513] uppercase tracking-wider">
-                    رقم الحساب • Account Number
-                  </label>
-                  <div className="flex items-center gap-3 min-w-0">
-                    <code className="flex-1 bg-[#FFF8DC] border-2 border-[#D2B48C] px-5 sm:px-6 py-4 rounded-xl text-base sm:text-lg font-mono text-[#5C4033] truncate shadow-inner">
-                      0420302699610010
-                    </code>
-                    <button
-                      onClick={() => copyToClipboard("0420302699610010", "saib-account")}
-                      className="p-4 hover:bg-[#F5E6D3] rounded-xl transition-all duration-200 flex-shrink-0 hover:scale-110 active:scale-95 border-2 border-[#D2B48C] hover:border-[#8B4513] relative group"
-                    >
-                      <Copy className="w-6 h-6 text-[#8B4513] group-hover:text-[#A0522D] transition-colors" />
-                      {copied === "saib-account" && (
-                        <span className="absolute -top-12 left-1/2 -translate-x-1/2 text-sm text-white font-semibold bg-[#8B4513] px-4 py-2 rounded-lg shadow-2xl animate-fade-in whitespace-nowrap">
-                          ✓ Copied!
-                        </span>
-                      )}
-                    </button>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-
           {/* Instapay Payment Option */}
-          <div className="border border-white/30 rounded-2xl overflow-hidden hover:border-white/50 hover:shadow-2xl transition-all duration-500 bg-white/25 backdrop-blur-2xl shadow-xl animate-slide-up-delay-4 backdrop-saturate-150">
+          <div className="border border-white/30 rounded-2xl overflow-hidden hover:border-white/50 hover:shadow-2xl transition-all duration-500 bg-white/25 backdrop-blur-2xl shadow-xl animate-slide-up-delay-2 backdrop-saturate-150">
             <button
               onClick={() => setExpandedBank(expandedBank === "instapay" ? null : "instapay")}
               className="w-full px-7 sm:px-8 py-6 sm:py-7 bg-white/20 backdrop-blur-md hover:bg-white/30 flex items-center justify-between transition-all duration-300 group border-b border-white/20"
@@ -369,19 +237,130 @@ export default function PaymentConfirmation() {
               </div>
             )}
           </div>
+
+          {/* Bank MISR */}
+          <div className="border border-white/30 rounded-2xl overflow-hidden hover:border-white/50 hover:shadow-2xl transition-all duration-500 bg-white/25 backdrop-blur-2xl shadow-xl animate-slide-up-delay-3 backdrop-saturate-150">
+            <button
+              onClick={() => setExpandedBank(expandedBank === "misr" ? null : "misr")}
+              className="w-full px-7 sm:px-8 py-6 sm:py-7 bg-white/20 backdrop-blur-md hover:bg-white/30 flex items-center justify-between transition-all duration-300 group border-b border-white/20"
+            >
+              <div className="text-left min-w-0">
+                <p className="font-bold text-xl sm:text-2xl text-[#5C4033] truncate">بنك مصر</p>
+                <p className="text-base sm:text-lg text-[#8B4513] mt-1">Banque MISR</p>
+              </div>
+              <ChevronDown
+                className={`w-6 h-6 sm:w-7 sm:h-7 text-[#8B4513] transition-all duration-300 flex-shrink-0 ml-4 group-hover:scale-110 group-hover:text-[#A0522D]`}
+                style={{
+                  transform: expandedBank === "misr" ? "rotate(180deg)" : "rotate(0deg)",
+                }}
+              />
+            </button>
+
+            {expandedBank === "misr" && (
+              <div className="px-7 sm:px-8 py-7 sm:py-8 space-y-6 bg-white/20 backdrop-blur-xl animate-expand backdrop-saturate-150">
+                <div className="space-y-3">
+                  <label className="text-sm font-semibold text-[#8B4513] uppercase tracking-wider">
+                    رقم الحساب • Account Number
+                  </label>
+                  <div className="flex items-center gap-3 min-w-0">
+                    <code className="flex-1 bg-[#FFF8DC] border-2 border-[#D2B48C] px-5 sm:px-6 py-4 rounded-xl text-base sm:text-lg font-mono text-[#5C4033] truncate shadow-inner">
+                      4620001000000980
+                    </code>
+                    <button
+                      onClick={() => copyToClipboard("4620001000000980", "misr-account")}
+                      className="p-4 hover:bg-[#F5E6D3] rounded-xl transition-all duration-200 flex-shrink-0 hover:scale-110 active:scale-95 border-2 border-[#D2B48C] hover:border-[#8B4513] relative group"
+                    >
+                      <Copy className="w-6 h-6 text-[#8B4513] group-hover:text-[#A0522D] transition-colors" />
+                      {copied === "misr-account" && (
+                        <span className="absolute -top-12 left-1/2 -translate-x-1/2 text-sm text-white font-semibold bg-[#8B4513] px-4 py-2 rounded-lg shadow-2xl animate-fade-in whitespace-nowrap">
+                          ✓ Copied!
+                        </span>
+                      )}
+                    </button>
+                  </div>
+                </div>
+
+                <div className="space-y-3">
+                  <label className="text-sm font-semibold text-[#8B4513] uppercase tracking-wider">IBAN</label>
+                  <div className="flex items-center gap-3 min-w-0">
+                    <code className="flex-1 bg-[#FFF8DC] border-2 border-[#D2B48C] px-5 sm:px-6 py-4 rounded-xl text-sm sm:text-base font-mono text-[#5C4033] truncate shadow-inner">
+                      EG860002046204620001000000980
+                    </code>
+                    <button
+                      onClick={() => copyToClipboard("EG860002046204620001000000980", "misr-iban")}
+                      className="p-4 hover:bg-[#F5E6D3] rounded-xl transition-all duration-200 flex-shrink-0 hover:scale-110 active:scale-95 border-2 border-[#D2B48C] hover:border-[#8B4513] relative group"
+                    >
+                      <Copy className="w-6 h-6 text-[#8B4513] group-hover:text-[#A0522D] transition-colors" />
+                      {copied === "misr-iban" && (
+                        <span className="absolute -top-12 left-1/2 -translate-x-1/2 text-sm text-white font-semibold bg-[#8B4513] px-4 py-2 rounded-lg shadow-2xl animate-fade-in whitespace-nowrap">
+                          ✓ Copied!
+                        </span>
+                      )}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Bank S.A.I.B */}
+          <div className="border border-white/30 rounded-2xl overflow-hidden hover:border-white/50 hover:shadow-2xl transition-all duration-500 bg-white/25 backdrop-blur-2xl shadow-xl animate-slide-up-delay-4 backdrop-saturate-150">
+            <button
+              onClick={() => setExpandedBank(expandedBank === "saib" ? null : "saib")}
+              className="w-full px-7 sm:px-8 py-6 sm:py-7 bg-white/20 backdrop-blur-md hover:bg-white/30 flex items-center justify-between transition-all duration-300 group border-b border-white/20"
+            >
+              <div className="text-left min-w-0">
+                <p className="font-bold text-xl sm:text-2xl text-[#5C4033] truncate">بنك سايب</p>
+                <p className="text-base sm:text-lg text-[#8B4513] mt-1">S.A.I.B Bank</p>
+              </div>
+              <ChevronDown
+                className={`w-6 h-6 sm:w-7 sm:h-7 text-[#8B4513] transition-all duration-300 flex-shrink-0 ml-4 group-hover:scale-110 group-hover:text-[#A0522D]`}
+                style={{
+                  transform: expandedBank === "saib" ? "rotate(180deg)" : "rotate(0deg)",
+                }}
+              />
+            </button>
+
+            {expandedBank === "saib" && (
+              <div className="px-7 sm:px-8 py-7 sm:py-8 space-y-6 bg-white/20 backdrop-blur-xl animate-expand backdrop-saturate-150">
+                <div className="space-y-3">
+                  <label className="text-sm font-semibold text-[#8B4513] uppercase tracking-wider">
+                    رقم الحساب • Account Number
+                  </label>
+                  <div className="flex items-center gap-3 min-w-0">
+                    <code className="flex-1 bg-[#FFF8DC] border-2 border-[#D2B48C] px-5 sm:px-6 py-4 rounded-xl text-base sm:text-lg font-mono text-[#5C4033] truncate shadow-inner">
+                      0420302699610010
+                    </code>
+                    <button
+                      onClick={() => copyToClipboard("0420302699610010", "saib-account")}
+                      className="p-4 hover:bg-[#F5E6D3] rounded-xl transition-all duration-200 flex-shrink-0 hover:scale-110 active:scale-95 border-2 border-[#D2B48C] hover:border-[#8B4513] relative group"
+                    >
+                      <Copy className="w-6 h-6 text-[#8B4513] group-hover:text-[#A0522D] transition-colors" />
+                      {copied === "saib-account" && (
+                        <span className="absolute -top-12 left-1/2 -translate-x-1/2 text-sm text-white font-semibold bg-[#8B4513] px-4 py-2 rounded-lg shadow-2xl animate-fade-in whitespace-nowrap">
+                          ✓ Copied!
+                        </span>
+                      )}
+                    </button>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
         </div>
 
         {/* Account Name Info */}
         <div className="bg-white/30 backdrop-blur-2xl rounded-2xl p-7 sm:p-8 shadow-2xl border border-white/30 animate-slide-up-delay-5 backdrop-saturate-150">
-          <p className="text-base sm:text-lg text-[#8B4513] mb-4 text-center">اسم الحساب • Account Holder Name:</p>
+          <p className="text-sm sm:text-base text-[#8B4513] mb-4 text-center">اسم الحساب • Account Holder Name:</p>
           
           {/* Arabic Account Name */}
           <div className="space-y-2 mb-4">
-            <label className="text-sm font-semibold text-[#8B4513] uppercase tracking-wider block text-center">
+            <label className="text-xs font-semibold text-[#8B4513] uppercase tracking-wider block text-center">
               بالعربية • Arabic
             </label>
             <div className="flex items-center gap-3 justify-center">
-              <code className="bg-[#FFF8DC] border-2 border-[#D2B48C] px-5 sm:px-6 py-4 rounded-xl text-lg sm:text-xl font-bold text-[#5C4033] shadow-inner max-w-md">
+              <code className="bg-[#FFF8DC] border-2 border-[#D2B48C] px-4 sm:px-5 py-3 rounded-xl text-sm sm:text-base font-bold text-[#5C4033] shadow-inner max-w-md">
                 نجيب سليم وشركاه
               </code>
               <button
@@ -400,11 +379,11 @@ export default function PaymentConfirmation() {
 
           {/* English Account Name */}
           <div className="space-y-2">
-            <label className="text-sm font-semibold text-[#8B4513] uppercase tracking-wider block text-center">
+            <label className="text-xs font-semibold text-[#8B4513] uppercase tracking-wider block text-center">
               بالإنجليزية • English
             </label>
             <div className="flex items-center gap-3 justify-center">
-              <code className="bg-[#FFF8DC] border-2 border-[#D2B48C] px-5 sm:px-6 py-4 rounded-xl text-lg sm:text-xl font-bold text-[#5C4033] shadow-inner max-w-md">
+              <code className="bg-[#FFF8DC] border-2 border-[#D2B48C] px-4 sm:px-5 py-3 rounded-xl text-sm sm:text-base font-bold text-[#5C4033] shadow-inner max-w-md">
                 Naguib Selim & Co.
               </code>
               <button
@@ -454,7 +433,7 @@ export default function PaymentConfirmation() {
 
         {/* Footer Info */}
         <div className="text-center space-y-4 py-8 sm:py-10 border-t-2 border-[#D2B48C]/50">
-          <p className="text-base sm:text-lg text-[#8B4513]">لتأكيد حجز موعد التركيب • To confirm installation date</p>
+          <p className="text-base sm:text-lg text-[#8B4513]">لتأكيد حجز موعد المعاينة • To confirm preview appointment</p>
           <p className="text-lg sm:text-xl text-[#5C4033] font-bold">Naguib Selim • Fabrics & More</p>
         </div>
       </div>
@@ -507,20 +486,6 @@ export default function PaymentConfirmation() {
           }
         }
 
-        @keyframes check-draw {
-          0% {
-            stroke-dasharray: 0 50;
-            opacity: 0;
-          }
-          50% {
-            opacity: 1;
-          }
-          100% {
-            stroke-dasharray: 50 0;
-            opacity: 1;
-          }
-        }
-
         @keyframes expand {
           from {
             opacity: 0;
@@ -546,15 +511,6 @@ export default function PaymentConfirmation() {
           }
           75% {
             transform: translate(15px, -15px) rotate(1deg);
-          }
-        }
-
-        @keyframes logo-glow {
-          0%, 100% {
-            filter: brightness(1.05) contrast(1.05) drop-shadow(0 0 20px rgba(139, 69, 19, 0.3));
-          }
-          50% {
-            filter: brightness(1.1) contrast(1.1) drop-shadow(0 0 30px rgba(139, 69, 19, 0.5));
           }
         }
 
@@ -650,10 +606,6 @@ export default function PaymentConfirmation() {
           animation: bounce-in 0.8s ease-out;
         }
 
-        .animate-check-draw {
-          animation: check-draw 1s ease-out;
-        }
-
         .animate-expand {
           animation: expand 0.6s ease-out forwards;
         }
@@ -672,10 +624,6 @@ export default function PaymentConfirmation() {
           background-size: 200% 200%;
         }
 
-        .animate-logo-glow {
-          animation: logo-glow 3s ease-in-out infinite;
-        }
-
         .animate-pulse-slow {
           animation: pulse-slow 2s ease-in-out infinite;
         }
@@ -683,3 +631,4 @@ export default function PaymentConfirmation() {
     </div>
   )
 }
+
