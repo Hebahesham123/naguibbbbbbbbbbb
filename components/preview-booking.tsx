@@ -171,24 +171,6 @@ export default function PreviewBooking() {
 
             {expandedBank === "instapay" && (
               <div className="px-7 sm:px-8 py-7 sm:py-8 space-y-6 bg-white/20 backdrop-blur-xl animate-expand backdrop-saturate-150">
-                <div className="bg-white/30 backdrop-blur-2xl rounded-xl p-6 space-y-4 border border-white/30">
-                  <div className="flex items-start gap-4">
-                    <div className="relative flex-shrink-0 mt-1">
-                      <div className="absolute inset-0 bg-[#8B4513]/30 rounded-full blur-lg" />
-                      <AlertCircle className="relative w-6 h-6 sm:w-7 sm:h-7 text-[#8B4513]" />
-                    </div>
-                    <div className="min-w-0 flex-1 space-y-2">
-                      <p className="font-bold text-[#5C4033] text-lg sm:text-xl">⚠️ هام - Important</p>
-                      <p className="text-base sm:text-lg text-[#6B4E3D] leading-relaxed">
-                        يرجى إتمام سداد المبلغ المتبقي المستحق عبر أحد الخيارات التالية:
-                      </p>
-                      <p className="text-base sm:text-lg text-[#6B4E3D] leading-relaxed">
-                        Please complete payment using one of the options below:
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
                 {/* Bank MISR Account */}
                 <div className="space-y-3">
                   <label className="text-sm font-semibold text-[#8B4513] uppercase tracking-wider">
